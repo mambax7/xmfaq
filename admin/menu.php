@@ -20,29 +20,34 @@
 defined('XOOPS_ROOT_PATH') || die('XOOPS root path not defined');
 
 $moduleHandler = xoops_getHandler('module');
-$module         = $moduleHandler->getByDirname(basename(dirname(__DIR__)));
-$pathIcon32     = '../../' . $module->getInfo('icons32');
+$module        = $moduleHandler->getByDirname(basename(dirname(__DIR__)));
+$pathIcon32    = '../../' . $module->getInfo('icons32');
 xoops_loadLanguage('modinfo', $module->dirname());
 
-$adminmenu = array();
+$adminmenu[] = [
+    'title' => _MI_XMFAQ_MENU_HOME,
+    'link'  => 'admin/index.php',
+    'desc'  => _MI_XMFAQ_MENU_HOME_DESC,
+    'icon'  => $pathIcon32 . '/home.png',
+];
 
-$i                      = 1;
-$adminmenu[$i]['title'] = _MI_XMFAQ_MENU_HOME;
-$adminmenu[$i]['link']  = 'admin/index.php';
-$adminmenu[$i]['desc']  = _MI_XMFAQ_MENU_HOME_DESC;
-$adminmenu[$i]['icon']  = $pathIcon32 . '/home.png';
-$i++;
-$adminmenu[$i]['title'] = _MI_XMFAQ_MENU_CATEGORY;
-$adminmenu[$i]['link']  = 'admin/category.php';
-$adminmenu[$i]['desc']  = _MI_XMFAQ_MENU_CATEGORY_DESC;
-$adminmenu[$i]['icon']  = $pathIcon32 . '/category.png';
-$i++;
-$adminmenu[$i]['title'] = _MI_XMFAQ_MENU_REQUEST;
-$adminmenu[$i]['link']  = 'admin/question.php';
-$adminmenu[$i]['desc']  = _MI_XMFAQ_MENU_REQUEST_DESC;
-$adminmenu[$i]['icon']  = $pathIcon32 . '/faq.png';
-$i++;
-$adminmenu[$i]['title'] = _MI_XMFAQ_MENU_ABOUT;
-$adminmenu[$i]['link']  = 'admin/about.php';
-$adminmenu[$i]['desc']  = _MI_XMFAQ_MENU_ABOUT_DESC;
-$adminmenu[$i]['icon']  = $pathIcon32 . '/about.png';
+$adminmenu[] = [
+    'title' => _MI_XMFAQ_MENU_CATEGORY,
+    'link'  => 'admin/category.php',
+    'desc'  => _MI_XMFAQ_MENU_CATEGORY_DESC,
+    'icon'  => $pathIcon32 . '/category.png',
+];
+
+$adminmenu[] = [
+    'title' => _MI_XMFAQ_MENU_REQUEST,
+    'link'  => 'admin/question.php',
+    'desc'  => _MI_XMFAQ_MENU_REQUEST_DESC,
+    'icon'  => $pathIcon32 . '/faq.png',
+];
+
+$adminmenu[] = [
+    'title' => _MI_XMFAQ_MENU_ABOUT,
+    'link'  => 'admin/about.php',
+    'desc'  => _MI_XMFAQ_MENU_ABOUT_DESC,
+    'icon'  => $pathIcon32 . '/about.png',
+];
