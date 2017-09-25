@@ -61,7 +61,7 @@ class xmfaq_question extends XoopsObject
      */
     public function getForm($action = false)
     {
-        if ($action === false) {
+        if (false === $action) {
             $action = $_SERVER['REQUEST_URI'];
         }
         include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
@@ -104,7 +104,7 @@ class xmfaq_question extends XoopsObject
         $criteria->setOrder('ASC');
         $category_arr   = $categoryHandler->getall($criteria);
         $category_count = $categoryHandler->getCount($criteria);
-        if ($category_count == 0) {
+        if (0 == $category_count) {
             redirect_header('category.php', 2, _AM_XMFAQ_ERROR_CAT);
         }
 

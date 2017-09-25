@@ -22,18 +22,18 @@ include_once XOOPS_ROOT_PATH . '/header.php';
 
 $category_id = XoopsRequest::getInt('category_id', 0);
 
-if ($category_id == 0) {
+if (0 == $category_id) {
     redirect_header('index.php', 2, _MD_XMFAQ_VIEWCATEGORY_NOCAT);
     exit();
 }
 $category = $categoryHandler->get($category_id);
 
-if (count($category) == 0) {
+if (0 == count($category)) {
     redirect_header('index.php', 2, _MD_XMFAQ_VIEWCATEGORY_NOCAT);
     exit();
 }
 
-if ($category->getVar('category_status') == 0) {
+if (0 == $category->getVar('category_status')) {
     redirect_header('index.php', 2, _MD_XMFAQ_VIEWCATEGORY_NACTIVE);
     exit();
 }

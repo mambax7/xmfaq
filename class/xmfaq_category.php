@@ -60,7 +60,7 @@ class xmfaq_category extends XoopsObject
     {
         $upload_size = 500000;
         global $xoopsModuleConfig, $xoopsUser;
-        if ($action === false) {
+        if (false === $action) {
             $action = $_SERVER['REQUEST_URI'];
         }
         include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';

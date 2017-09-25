@@ -101,7 +101,7 @@ switch ($op) {
         $question    = $questionHandler->get($question_id);
         $category    = $categoryHandler->get($question->getVar('question_cid'));
 
-        if ($question->getVar('question_status') == 0) {
+        if (0 == $question->getVar('question_status')) {
             $status = '<span style="color: red; font-weight:bold;">' . _AM_XMFAQ_STATUS_NA . '</span>';
         } else {
             $status = '<span style="color: green; font-weight:bold;">' . _AM_XMFAQ_STATUS_A . '</span>';
@@ -156,7 +156,7 @@ switch ($op) {
         $question_id = XoopsRequest::getInt('question_id', 0);
         $obj         = $questionHandler->get($question_id);
 
-        if (isset($_POST['ok']) && $_POST['ok'] == 1) {
+        if (isset($_POST['ok']) && 1 == $_POST['ok']) {
             if (!$GLOBALS['xoopsSecurity']->check()) {
                 redirect_header('question.php', 3, implode(',', $GLOBALS['xoopsSecurity']->getErrors()));
             }
@@ -191,7 +191,7 @@ switch ($op) {
         $question['weight'] = $_POST['question_weight'];
         $question['status'] = XoopsRequest::getInt('question_status', 0, 'POST');
         // error
-        if ((int)$question['weight'] == 0 && $question['weight'] != '0') {
+        if (0 == (int)$question['weight'] && '0' != $question['weight']) {
             $message_error .= _AM_XMFAQ_ERROR_WEIGHT . '<br>';
             $question['weight'] = 0;
         }
@@ -201,7 +201,7 @@ switch ($op) {
         $obj->setVar('question_weight', $question['weight']);
         $obj->setVar('question_status', $question['status']);
 
-        if ($message_error != '') {
+        if ('' != $message_error) {
             // Define button addItemButton
             $admin_class->addItemButton(_AM_XMFAQ_QUESTION_LIST, 'question.php', 'list');
             $xoopsTpl->assign('renderbutton', $admin_class->renderButton());

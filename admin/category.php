@@ -111,7 +111,7 @@ switch ($op) {
         $category_id = XoopsRequest::getInt('category_id', 0);
         $obj         = $categoryHandler->get($category_id);
 
-        if (isset($_POST['ok']) && $_POST['ok'] == 1) {
+        if (isset($_POST['ok']) && 1 == $_POST['ok']) {
             if (!$GLOBALS['xoopsSecurity']->check()) {
                 redirect_header('category.php', 3, implode(',', $GLOBALS['xoopsSecurity']->getErrors()));
             }
@@ -145,12 +145,12 @@ switch ($op) {
         $obj->setVar('category_title', $_POST['category_title']);
         $obj->setVar('category_description', $_POST['category_description']);
         $obj->setVar('category_weight', $_POST['category_weight']);
-        $status = ($_POST['category_status'] == 1) ? '1' : '0';
+        $status = (1 == $_POST['category_status']) ? '1' : '0';
         $obj->setVar('category_status', $status);
-        if ((int)$_REQUEST['category_weight'] == 0 && $_REQUEST['category_weight'] != '0') {
+        if (0 == (int)$_REQUEST['category_weight'] && '0' != $_REQUEST['category_weight']) {
             $message_error .= _AM_XMFAQ_ERROR_WEIGHT . '<br>';
         }
-        if ($message_error != '') {
+        if ('' != $message_error) {
             // Define button addItemButton
             $admin_class->addItemButton(_AM_XMFAQ_CATEGORY_LIST, 'category.php', 'list');
             $xoopsTpl->assign('renderbutton', $admin_class->renderButton());
